@@ -25,7 +25,7 @@ const initialState: State = {
 
 export const discoverMoviesAsync = createAsyncThunk(
   "movies/fetchMovies",
-  async (page: number, {rejectWithValue}) => {
+  async (page: number, { rejectWithValue }) => {
     try {
       const { data } = await discoverMovies(page);
       return data;
@@ -48,10 +48,7 @@ export const moviesSlice = createSlice({
       .addCase(discoverMoviesAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        state.apiResponse.results = [
-          ...state.apiResponse.results,
-          ...action.payload.results,
-        ];
+        state.apiResponse.results.push(...action.payload.results);
         state.apiResponse.page += 1;
       })
       .addCase(discoverMoviesAsync.rejected, (state) => {

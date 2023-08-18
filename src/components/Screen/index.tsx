@@ -32,21 +32,23 @@ export const Screen = () => {
   return (
     <>
       <div className="screen">
-        <InfiniteScroll
-          dataLength={results.length}
-          next={loadMoreMovies}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
-        >
-          <div className="movies-list">
+        <div className="movies-list">
+          <InfiniteScroll
+            dataLength={results.length}
+            next={loadMoreMovies}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+          >
             <div className="movie-cards">
               <MoviesList movies={results} />
             </div>
-          </div>
-        </InfiniteScroll>
+          </InfiniteScroll>
+        </div>
         {error && (
           <div className="error-box">
-            <h2>Oh Oh!! An error occured while fetching your favourite movies</h2>
+            <h2>
+              Oh Oh!! An error occured while fetching your favourite movies
+            </h2>
           </div>
         )}
       </div>
