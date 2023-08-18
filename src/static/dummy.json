@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "Inception",
+    "genre": "Science Fiction",
+    "releaseYear": 2010,
+    "director": "Christopher Nolan",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
+  },
+  {
+    "id": 2,
+    "title": "The Shawshank Redemption",
+    "genre": "Drama",
+    "releaseYear": 1994,
+    "director": "Frank Darabont",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg"
+  },
+  {
+    "id": 3,
+    "title": "The Dark Knight",
+    "genre": "Action",
+    "releaseYear": 2008,
+    "director": "Christopher Nolan",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Pulp Fiction",
+    "genre": "Crime",
+    "releaseYear": 1994,
+    "director": "Quentin Tarantino",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Avatar",
+    "genre": "Action",
+    "releaseYear": 2009,
+    "director": "James Cameron",
+    "description": "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Forrest Gump",
+    "genre": "Drama",
+    "releaseYear": 1994,
+    "director": "Robert Zemeckis",
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Inception",
+    "genre": "Science Fiction",
+    "releaseYear": 2010,
+    "director": "Christopher Nolan",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"
+  },
+  {
+    "id": 8,
+    "title": "The Shawshank Redemption",
+    "genre": "Drama",
+    "releaseYear": 1994,
+    "director": "Frank Darabont",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/lyQBXzOQSuE59IsHyhrp0qIiPAz.jpg"
+  },
+  {
+    "id": 9,
+    "title": "The Dark Knight",
+    "genre": "Action",
+    "releaseYear": 2008,
+    "director": "Christopher Nolan",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Pulp Fiction",
+    "genre": "Crime",
+    "releaseYear": 1994,
+    "director": "Quentin Tarantino",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Avatar",
+    "genre": "Action",
+    "releaseYear": 2009,
+    "director": "James Cameron",
+    "description": "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kyeqWdyUXW608qlYkRqosgbbJyK.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Forrest Gump",
+    "genre": "Drama",
+    "releaseYear": 1994,
+    "director": "Robert Zemeckis",
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+    "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg"
+  }
+]
