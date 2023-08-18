@@ -1,12 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { discoverMovies } from "../api/movieApi";
 import { Movie } from "../types/types";
+import { RootState } from "../store/store";
 
 interface Response {
   page: number;
   results: Movie[];
-  total_pages: number;
-  total_results: number;
 }
 
 export interface State {
@@ -17,10 +16,8 @@ export interface State {
 
 const initialState: State = {
   apiResponse: {
-    page: 0,
+    page: 1,
     results: [],
-    total_pages: 0,
-    total_results: 0,
   },
   error: false,
   loading: false,
@@ -28,9 +25,13 @@ const initialState: State = {
 
 export const discoverMoviesAsync = createAsyncThunk(
   "movies/fetchMovies",
-  async () => {
-    const resp = await discoverMovies();
-    return resp.data;
+  async (page: number, {rejectWithValue}) => {
+    try {
+      const { data } = await discoverMovies(page);
+      return data;
+    } catch (error: any) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
@@ -47,7 +48,11 @@ export const moviesSlice = createSlice({
       .addCase(discoverMoviesAsync.fulfilled, (state, action) => {
         state.loading = false;
         state.error = false;
-        state.apiResponse = action.payload;
+        state.apiResponse.results = [
+          ...state.apiResponse.results,
+          ...action.payload.results,
+        ];
+        state.apiResponse.page += 1;
       })
       .addCase(discoverMoviesAsync.rejected, (state) => {
         state.loading = false;
