@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { discoverMovies, fetchSingleMovie, findMovies } from "../api/movieApi";
-import { Movie } from "../types/types";
+import { Movie, SingleMovieInfo } from "../types/types";
 
 interface Response {
   page: number;
@@ -9,12 +9,12 @@ interface Response {
 
 interface QueryReponse {
   pageNum: number;
-  queryResults: any;
+  queryResults: Movie[];
 }
 
 export interface State {
   apiResponse: Response;
-  singleMovie: any;
+  singleMovie: SingleMovieInfo;
   apiQueryResponse: QueryReponse;
   error: boolean;
   loading: boolean;
