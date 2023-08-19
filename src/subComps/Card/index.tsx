@@ -1,10 +1,8 @@
-import React from "react";
-import "./styles/index.scss";
-import { Movie } from "../../types/types";
-import { IMG_NOT_AVAILABLE, IMG_PATH_300 } from "../../helpers/constants";
-import { CardTypes } from "./types/types";
-import { reduceTextLength } from "../../helpers/textHelper";
 import { Link } from "react-router-dom";
+import { IMG_NOT_AVAILABLE, IMG_PATH_300 } from "../../helpers/constants";
+import { reduceTextLength } from "../../helpers/textHelper";
+import "./styles/index.scss";
+import { CardTypes } from "./types/types";
 
 export const Card = ({ movie }: CardTypes) => {
   return (

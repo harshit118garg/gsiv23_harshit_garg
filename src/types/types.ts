@@ -1,3 +1,7 @@
+export interface TopNavPropTypes {
+  navProp: boolean;
+}
+
 export interface Movie {
   adult: boolean;
   backdrop_path: string;

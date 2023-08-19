@@ -7,8 +7,13 @@ import { MoviesList } from "../MoviesList";
 import "./styles/index.scss";
 import { Loader } from "../../subComps/Loader";
 import { ErrorBox } from "../../subComps/ErrorBox";
+import { TopNav } from "../TopNav";
 
-export const Screen = () => {
+interface ScreenBodyTypes {
+  navProp: boolean;
+}
+
+export const ScreenBody = ({ navProp }: ScreenBodyTypes) => {
   const dispatch = useDispatch<AppDispatch>();
   const results = useSelector(
     (state: RootState) => state.getMovies.apiResponse.results
@@ -33,7 +38,8 @@ export const Screen = () => {
 
   return (
     <>
-      <div className="screen">
+      <TopNav navProp={navProp} />
+      <div className="screen-body">
         {loading && <Loader />}
         <div className="movies-list">
           <InfiniteScroll

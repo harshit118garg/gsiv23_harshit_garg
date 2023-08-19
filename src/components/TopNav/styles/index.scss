@@ -42,6 +42,13 @@
     }
   }
 
+  .movie-details {
+    h3 {
+      font-size: $fontSizeNormal;
+      color: $cardTextColor;
+    }
+  }
+
   .return-home-icon {
     .home-icon {
       color: black;
