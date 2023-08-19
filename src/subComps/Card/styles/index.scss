@@ -8,40 +8,47 @@
   gap: 0.8rem;
   border-radius: $borradius;
   box-shadow: $cardBoxShadow;
+  transition: $transition;
 
-  .card-image {
-    height: 21.875rem;
-    img {
-      width: 100%;
-      height: inherit;
-      border-top-left-radius: $borradius;
-      border-top-right-radius: $borradius;
-      background-color: #ffffff;
+  .card-body {
+    .card-image {
+      height: 21.875rem;
+      img {
+        width: 100%;
+        height: inherit;
+        border-top-left-radius: $borradius;
+        border-top-right-radius: $borradius;
+        background-color: #ffffff;
+      }
+    }
+    .movie-info {
+      height: auto;
+      padding: 0.5rem;
+      .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.625rem;
+        font-size: $fontSizeSmaller;
+        .title {
+          color: $cardTextColor;
+          font-weight: 500;
+        }
+        .rating {
+          color: $cardRatingColor;
+          font-weight: 400;
+        }
+      }
+      .description {
+        p {
+          font-size: $fontSizeVSmaller * 1.25;
+          color: $cardTextColor;
+          font-weight: 400;
+        }
+      }
     }
   }
-  .movie-info {
-    height: auto;
-    padding: 0.5rem;
-    .row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.625rem;
-      font-size: $fontSizeSmaller;
-      .title {
-        color: $cardTextColor;
-        font-weight: 500;
-      }
-      .rating {
-        color: $cardRatingColor;
-        font-weight: 400;
-      }
-    }
-    .description {
-      p {
-        font-size: $fontSizeVSmaller * 1.25;
-        color: $cardTextColor;
-        font-weight: 400;
-      }
-    }
+
+  &:hover {
+    transform: scale(1.02);
   }
 }

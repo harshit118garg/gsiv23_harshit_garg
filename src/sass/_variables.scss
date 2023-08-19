@@ -1,5 +1,6 @@
 $fontFamily: "Roboto", sans-serif;
 // colors
+$bpdyColor: #faf0e6;
 $navigationBG: #fff;
 $searchBoxBG: #d8d8d8;
 $cardTextColor: #4a4a4a;
@@ -15,3 +16,5 @@ $fontSizeSmaller: 0.8rem;
 $fontSizeNormal: 1rem;
 $fontSizeMedium: 1.5rem;
 $fontSizeLarge: 1.625rem;
+// transition
+$transition: all 0.4s ease-in-out;

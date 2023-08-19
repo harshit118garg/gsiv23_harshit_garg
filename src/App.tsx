@@ -11,6 +11,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<Screen />} />
+          <Route path="movie/:id" element={<h3>Hello</h3>} />
         </Routes>
       </div>
     </>

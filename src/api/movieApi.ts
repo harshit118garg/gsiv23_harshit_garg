@@ -11,12 +11,12 @@ export const discoverMovies = async (page: number) => {
       page: page,
       sort_by: "popularity.desc",
       include_adult: false,
-      language: "en-US"
+      language: "en-US",
     },
   });
 };
 
-/* 
+/*  
 
 https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc
 
