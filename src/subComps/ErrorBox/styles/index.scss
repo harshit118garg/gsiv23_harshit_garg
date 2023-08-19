@@ -1,0 +1,9 @@
+@import "../../../sass/variables";
+
+.error-box {
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  color: white;
+  padding: 5rem;
+}

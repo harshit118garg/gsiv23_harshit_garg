@@ -10,6 +10,8 @@ export const discoverMovies = async (page: number) => {
       api_key: API_KEY,
       page: page,
       sort_by: "popularity.desc",
+      include_adult: false,
+      language: "en-US"
     },
   });
 };

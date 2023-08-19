@@ -5,6 +5,8 @@ import { discoverMoviesAsync } from "../../redux/slice";
 import { AppDispatch, RootState } from "../../store/store";
 import { MoviesList } from "../MoviesList";
 import "./styles/index.scss";
+import { Loader } from "../../subComps/Loader";
+import { ErrorBox } from "../../subComps/ErrorBox";
 
 export const Screen = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,25 +34,20 @@ export const Screen = () => {
   return (
     <>
       <div className="screen">
+        {loading && <Loader />}
         <div className="movies-list">
           <InfiniteScroll
             dataLength={results.length}
             next={loadMoreMovies}
             hasMore={true}
-            loader={<h4>Loading...</h4>}
+            loader={<h2>Loading....</h2>}
           >
             <div className="movie-cards">
               <MoviesList movies={results} />
             </div>
           </InfiniteScroll>
         </div>
-        {error && (
-          <div className="error-box">
-            <h2>
-              Oh Oh!! An error occured while fetching your favourite movies
-            </h2>
-          </div>
-        )}
+        {error && <ErrorBox />}
       </div>
     </>
   );

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { discoverMovies } from "../api/movieApi";
 import { Movie } from "../types/types";
-import { RootState } from "../store/store";
 
 interface Response {
   page: number;
