@@ -16,8 +16,21 @@ export const discoverMovies = async (page: number) => {
   });
 };
 
+export const fetchSingleMovie = async (id: number) => {
+  return axios.get(`${BASE_URL}/movie/${id}`, {
+    params: {
+      api_key: API_KEY,
+      language: "en-US",
+      append_to_response: "credits",
+    },
+  });
+};
+
 /*  
 
 https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&language=en-US&page=1&sort_by=popularity.desc
+
+
+https://api.themoviedb.org/3/movie/569094?api_key=${API_KEY}&language=en-US&append_to_response=credits
 
 */
