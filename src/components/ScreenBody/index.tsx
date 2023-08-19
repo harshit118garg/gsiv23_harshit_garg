@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useDispatch, useSelector } from "react-redux";
-import { discoverMoviesAsync } from "../../redux/slice";
+import { discoverMoviesAsync, findMoviesAsync } from "../../redux/slice";
 import { AppDispatch, RootState } from "../../store/store";
 import { MoviesList } from "../MoviesList";
 import "./styles/index.scss";
@@ -14,9 +14,20 @@ interface ScreenBodyTypes {
 }
 
 export const ScreenBody = ({ navProp }: ScreenBodyTypes) => {
+  const [query, setQuery] = useState<string>("");
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setQuery(value);
+  };
+
   const dispatch = useDispatch<AppDispatch>();
   const results = useSelector(
     (state: RootState) => state.getMovies.apiResponse.results
+  );
+
+  const queryMovies = useSelector(
+    (state: RootState) => state.getMovies.apiQueryResponse.results
   );
   const { error, loading } = useSelector((state: RootState) => state.getMovies);
 
@@ -25,8 +36,12 @@ export const ScreenBody = ({ navProp }: ScreenBodyTypes) => {
   };
 
   useEffect(() => {
-    fetchMovies(1);
-  }, [dispatch]);
+    let timeOut = setTimeout(() => {
+      query === "" ? fetchMovies(1) : dispatch(findMoviesAsync(query));
+    }, 800);
+
+    return () => clearTimeout(timeOut);
+  }, [dispatch, query]);
 
   const loadMoreMovies = () => {
     fetchMovies(page + 1);
@@ -35,10 +50,15 @@ export const ScreenBody = ({ navProp }: ScreenBodyTypes) => {
   const page = useSelector(
     (state: RootState) => state.getMovies.apiResponse.page
   );
+  const queryPageNum = useSelector(
+    (state: RootState) => state.getMovies.apiQueryResponse.page
+  );
+
+  console.log("queryMovies", queryMovies);
 
   return (
     <>
-      <TopNav navProp={navProp} />
+      <TopNav navProp={navProp} query={query} changeHandler={changeHandler} />
       <div className="screen-body">
         {loading && <Loader />}
         <div className="movies-list">
@@ -53,6 +73,20 @@ export const ScreenBody = ({ navProp }: ScreenBodyTypes) => {
             </div>
           </InfiniteScroll>
         </div>
+        {queryMovies.length > 1 && (
+          <div className="movies-list">
+            <InfiniteScroll
+              dataLength={queryMovies.length}
+              next={loadMoreMovies}
+              hasMore={true}
+              loader={<h2>Loading....</h2>}
+            >
+              <div className="movie-cards">
+                <MoviesList movies={queryMovies} />
+              </div>
+            </InfiniteScroll>
+          </div>
+        )}
         {error && <ErrorBox />}
       </div>
     </>

@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/index.scss";
 import { Link } from "react-router-dom";
 import { MdHome, MdSearch } from "react-icons/md";
 import { TopNavPropTypes } from "../../types/types";
 
-export const TopNav = ({ navProp }: TopNavPropTypes) => {
+export const TopNav = ({ navProp, changeHandler, query }: TopNavPropTypes) => {
   return (
     <>
       <div className="top-nav-bar">
         {navProp ? (
           <div className="search-container">
-            <input type="text" className="search-input" placeholder="Search" />
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Search"
+              value={query}
+              onChange={changeHandler}
+            />
             <MdSearch className="icon search-icon" />
           </div>
         ) : (

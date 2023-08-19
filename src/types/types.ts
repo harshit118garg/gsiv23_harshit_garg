@@ -1,5 +1,7 @@
 export interface TopNavPropTypes {
   navProp: boolean;
+  query?: string;
+  changeHandler?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface Movie {
