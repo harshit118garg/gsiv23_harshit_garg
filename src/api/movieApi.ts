@@ -26,15 +26,16 @@ export const fetchSingleMovie = async (id: number) => {
   });
 };
 
-export const findMovies = async (queryVal: string) => {
+export const findMovies = async (item: { query: string; pageNum: number }) => {
+  const { query, pageNum } = item;
   return axios.get(`${BASE_URL}/search/movie`, {
     params: {
       api_key: API_KEY,
-      page: 1,
+      page: pageNum,
       sort_by: "popularity.desc",
       include_adult: false,
       language: "en-US",
-      query: queryVal,
+      query: query,
     },
   });
 };

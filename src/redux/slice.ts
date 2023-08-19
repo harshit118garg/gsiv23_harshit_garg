@@ -7,10 +7,15 @@ interface Response {
   results: Movie[];
 }
 
+interface QueryReponse {
+  pageNum: number;
+  queryResults: any;
+}
+
 export interface State {
   apiResponse: Response;
   singleMovie: any;
-  apiQueryResponse: Response;
+  apiQueryResponse: QueryReponse;
   error: boolean;
   loading: boolean;
 }
@@ -22,8 +27,8 @@ const initialState: State = {
   },
   singleMovie: {},
   apiQueryResponse: {
-    page: 1,
-    results: [],
+    pageNum: 1,
+    queryResults: [],
   },
   error: false,
   loading: false,
@@ -57,11 +62,10 @@ export const fetchAMovieAsync: any = createAsyncThunk(
 
 export const findMoviesAsync: any = createAsyncThunk(
   "movies/findMovie",
-  async (_queryVal: string, { rejectWithValue }) => {
+  async (item: { query: string; pageNum: number }, { rejectWithValue }) => {
     try {
       console.log(` 🚀: Async Thunk for Fetch Movies based on user query`);
-      const { data } = await findMovies(_queryVal);
-      console.log("data for find Movie -> ", data);
+      const { data } = await findMovies(item);
       return data;
     } catch (error: any) {
       return rejectWithValue(error.response.data);
@@ -119,14 +123,13 @@ export const moviesSlice = createSlice({
       .addCase(
         findMoviesAsync.fulfilled,
         (state, action: PayloadAction<any>) => {
-          console.log("action in find Movies -> ", action.payload);
           state.loading = false;
           state.error = false;
-          state.apiQueryResponse.results = [
-            ...state.apiQueryResponse.results,
+          state.apiQueryResponse.queryResults = [
+            ...state.apiQueryResponse.queryResults,
             ...action.payload.results,
           ];
-          state.apiQueryResponse.page += 1;
+          state.apiQueryResponse.pageNum += 1;
         }
       )
       .addCase(findMoviesAsync.rejected, (state) => {
