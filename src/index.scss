@@ -1,0 +1,18 @@
+@import "./sass/fonts";
+@import "./sass/variables";
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $fontFamily;
+}
+
+body {
+  margin: 0;
+  font-size: 62.5%;
+  background-color: $bpdyColor;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,69 @@
+@import "../../../sass/variables";
+
+.single-movie {
+  padding: 1.8rem;
+  width: 100%;
+  .movie-card-body {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    .img-part {
+      height: 100%;
+      width: 20.625rem;
+      img {
+        height: 100%;
+        width: inherit;
+      }
+    }
+
+    .details-part {
+      width: auto;
+      margin: 0 1.5rem 0 0;
+
+      .row1 {
+        .head {
+          h3 {
+            font-size: $fontSizeNormal;
+            span {
+              color: $cardRatingColor;
+            }
+          }
+        }
+      }
+      .row2 {
+        p {
+          font-size: $fontSizeSmaller;
+
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+      .row3,
+      .row4 {
+        p {
+          font-size: $fontSizeSmaller;
+          text-align: justify;
+
+          span:first-child {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 786px) {
+      flex-direction: column;
+
+      .img-part {
+        width: 100%;
+        height: 24rem;
+      }
+
+      .details-part {
+        margin: 0;
+      }
+    }
+  }
+}
