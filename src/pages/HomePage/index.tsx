@@ -13,6 +13,7 @@ export interface HomePagePropTypes {
 }
 
 export const HomePage = ({ navProp }: HomePagePropTypes) => {
+  // use state for seach input
   const [query, setQuery] = useState<string>("");
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,12 +55,14 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
 
   // useEffect for Query Movies
   useEffect(() => {
-    let item = { query, pageNum };
-    let timeOut = setTimeout(() => {
-      fetchQueryMovies(item);
-    }, 900);
+    if (query) {
+      let item = { query, pageNum };
+      let timeOut = setTimeout(() => {
+        fetchQueryMovies(item);
+      }, 900);
 
-    return () => clearTimeout(timeOut);
+      return () => clearTimeout(timeOut);
+    }
   }, [query, dispatch]);
 
   // useEffect for latest movies

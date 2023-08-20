@@ -1,7 +1,7 @@
 import InfiniteScroll from "react-infinite-scroll-component";
+import { Movie } from "../../types/types";
 import { MoviesList } from "../MoviesList";
 import "./styles/index.scss";
-import { Movie } from "../../types/types";
 
 interface ScreenBodyTypes {
   movies: Movie[];
@@ -9,7 +9,7 @@ interface ScreenBodyTypes {
 }
 
 export const ScreenBody = ({ movies, loadMoreMovies }: ScreenBodyTypes) => {
-
+  console.log("length of movies arr -> ", movies.length);
   return (
     <>
       <InfiniteScroll
