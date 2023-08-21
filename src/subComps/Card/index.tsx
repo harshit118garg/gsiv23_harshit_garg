@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { IMG_NOT_AVAILABLE, IMG_PATH_300 } from "../../helpers/constants";
 import { reduceTextLength } from "../../helpers/textHelper";
+import { ImgComp } from "../ImgComp";
 import "./styles/index.scss";
 import { CardTypes } from "./types/types";
 
@@ -10,14 +10,7 @@ export const Card = ({ movie }: CardTypes) => {
       <Link to={`movie/${movie.id}`}>
         <div className="card-body">
           <div className="card-image">
-            <img
-              src={
-                movie.poster_path
-                  ? `${IMG_PATH_300}${movie.poster_path}`
-                  : IMG_NOT_AVAILABLE
-              }
-              alt={movie.title}
-            />
+            <ImgComp movie={movie} />
           </div>
           <div className="movie-info">
             <div className="row">

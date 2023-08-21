@@ -1,5 +1,5 @@
 import { castHelperFunction } from "../../helpers/castHelper";
-import { IMG_NOT_AVAILABLE, IMG_PATH_300 } from "../../helpers/constants";
+import { ImgComp } from "../../subComps/ImgComp";
 import { CrewMember, SingleMovieInfo } from "../../types/types";
 import "./styles/index.scss";
 
@@ -19,14 +19,7 @@ export const SingleMovie = ({
       <div className="single-movie">
         <div className="movie-card-body">
           <div className="img-part">
-            <img
-              src={
-                movie?.poster_path
-                  ? `${IMG_PATH_300}${movie?.poster_path}`
-                  : IMG_NOT_AVAILABLE
-              }
-              alt={movie?.title}
-            />
+            <ImgComp movie={movie} />
           </div>
           <div className="details-part">
             <div className="row1">
