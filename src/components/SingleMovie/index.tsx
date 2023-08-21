@@ -1,3 +1,4 @@
+import { castHelperFunction } from "../../helpers/castHelper";
 import { IMG_NOT_AVAILABLE, IMG_PATH_300 } from "../../helpers/constants";
 import { CrewMember, SingleMovieInfo } from "../../types/types";
 import "./styles/index.scss";
@@ -38,16 +39,14 @@ export const SingleMovie = ({
             <div className="row2">
               <p>
                 <span>Date of Release:</span> {movie?.release_date} |{" "}
-                <span>Length:</span> {movie?.runtime} minutes | <span>Director:</span>{" "}
-                {movieDirector?.name}
+                <span>Length:</span> {movie?.runtime} minutes |{" "}
+                <span>Director:</span> {movieDirector?.name}
               </p>
             </div>
             <div className="row3">
               <p>
                 <span>Cast: </span>
-                {castMembers.map((cast: string, i: number) => {
-                  return <span key={i}> {cast} ,</span>;
-                })}
+                {castHelperFunction(castMembers)}
               </p>
             </div>
             <div className="row4">
