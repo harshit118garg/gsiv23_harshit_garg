@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ScreenBody } from "../../components/ScreenBody";
 import { TopNav } from "../../components/TopNav";
 import { discoverMoviesAsync, findMoviesAsync } from "../../redux/slice";
-import "./styles/index.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
-import { Loader } from "../../subComps/Loader";
 import { ErrorBox } from "../../subComps/ErrorBox";
-import { ScreenBody } from "../../components/ScreenBody";
+import { Loader } from "../../subComps/Loader";
+import "./styles/index.scss";
 
 export interface HomePagePropTypes {
   navProp: boolean;

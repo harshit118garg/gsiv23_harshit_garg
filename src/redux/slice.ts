@@ -1,7 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { discoverMovies, fetchSingleMovie, findMovies } from "../api/movieApi";
 import { Movie, SingleMovieInfo } from "../types/types";
-import { stat } from "fs";
 
 interface Response {
   page: number;
