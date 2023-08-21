@@ -6,16 +6,20 @@ import "./styles/index.scss";
 interface ScreenBodyTypes {
   movies: Movie[];
   loadMoreMovies: () => void;
+  totalMovieResults: number;
 }
 
-export const ScreenBody = ({ movies, loadMoreMovies }: ScreenBodyTypes) => {
-  console.log("length of movies arr -> ", movies.length);
+export const ScreenBody = ({
+  movies,
+  loadMoreMovies,
+  totalMovieResults,
+}: ScreenBodyTypes) => {
   return (
     <>
       <InfiniteScroll
         dataLength={movies.length}
         next={loadMoreMovies}
-        hasMore={true}
+        hasMore={movies.length < totalMovieResults}
         loader={<h2>Loading....</h2>}
       >
         <div className="movie-cards">

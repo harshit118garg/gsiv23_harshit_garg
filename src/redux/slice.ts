@@ -1,15 +1,18 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { discoverMovies, fetchSingleMovie, findMovies } from "../api/movieApi";
 import { Movie, SingleMovieInfo } from "../types/types";
+import { stat } from "fs";
 
 interface Response {
   page: number;
   results: Movie[];
+  total_results: number;
 }
 
 interface QueryReponse {
   pageNum: number;
   queryResults: Movie[];
+  total_resultsQuery: number;
 }
 
 export interface State {
@@ -24,11 +27,13 @@ const initialState: State = {
   apiResponse: {
     page: 1,
     results: [],
+    total_results: 0,
   },
   singleMovie: {},
   apiQueryResponse: {
     pageNum: 1,
     queryResults: [],
+    total_resultsQuery: 0,
   },
   error: false,
   loading: false,
@@ -93,6 +98,7 @@ export const moviesSlice = createSlice({
             ...action.payload.results,
           ];
           state.apiResponse.page += 1;
+          state.apiResponse.total_results = action.payload.total_results;
         }
       )
       .addCase(discoverMoviesAsync.rejected, (state) => {
@@ -130,6 +136,7 @@ export const moviesSlice = createSlice({
             ...action.payload.results,
           ];
           state.apiQueryResponse.pageNum += 1;
+          state.apiQueryResponse.total_resultsQuery = action.payload.total_results
         }
       )
       .addCase(findMoviesAsync.rejected, (state) => {

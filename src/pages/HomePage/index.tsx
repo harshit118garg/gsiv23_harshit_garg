@@ -29,7 +29,7 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
     dispatch(discoverMoviesAsync(pageNum));
   };
 
-  const { page, results } = useSelector(
+  const { page, results, total_results } = useSelector(
     (state: RootState) => state.getMovies.apiResponse
   );
 
@@ -38,18 +38,18 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
     dispatch(findMoviesAsync(item));
   };
 
-  const { pageNum, queryResults } = useSelector(
+  const { pageNum, queryResults, total_resultsQuery } = useSelector(
     (state: RootState) => state.getMovies.apiQueryResponse
   );
 
   // load more latest movies on scroll
   const loadMoreLatestMovies = () => {
-    fetchLatestMovies(page + 1);
+    fetchLatestMovies(page);
   };
 
   // load more pages of movies based on userQuery
   const loadMoreQueryMovies = () => {
-    let item = { query, pageNum: pageNum + 1 };
+    let item = { query, pageNum };
     fetchQueryMovies(item);
   };
 
@@ -80,6 +80,7 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
             <ScreenBody
               movies={results}
               loadMoreMovies={loadMoreLatestMovies}
+              totalMovieResults={total_results}
             />
           </div>
         )}
@@ -88,6 +89,7 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
             <ScreenBody
               movies={queryResults}
               loadMoreMovies={loadMoreQueryMovies}
+              totalMovieResults={total_resultsQuery}
             />
           </div>
         )}
