@@ -23,7 +23,7 @@
 
 **How to run in your local**
 
-- Live url of the app -> [LIVE](https://movie-app-gsiv23.netlify.app/)
+- Live url of the app -> [LIVE](https://new-movies-verse.netlify.app/)
 - github url of the app -> [Github](https://github.com/harshit118garg/gsiv23_harshit_garg)
 - clone the github repo.
 - the deployed branch is main, so please do not change anything directly in the main branch. 
