@@ -1,4 +1,5 @@
-import { IMG_NOT_AVAILABLE, IMG_PATH_300 } from "../../helpers/constants";
+import { castHelperFunction } from "../../helpers/castHelper";
+import { ImgComp } from "../../subComps/ImgComp";
 import { CrewMember, SingleMovieInfo } from "../../types/types";
 import "./styles/index.scss";
 
@@ -18,14 +19,7 @@ export const SingleMovie = ({
       <div className="single-movie">
         <div className="movie-card-body">
           <div className="img-part">
-            <img
-              src={
-                movie?.poster_path
-                  ? `${IMG_PATH_300}${movie?.poster_path}`
-                  : IMG_NOT_AVAILABLE
-              }
-              alt={movie?.title}
-            />
+            <ImgComp movie={movie} />
           </div>
           <div className="details-part">
             <div className="row1">
@@ -38,16 +32,14 @@ export const SingleMovie = ({
             <div className="row2">
               <p>
                 <span>Date of Release:</span> {movie?.release_date} |{" "}
-                <span>Length:</span> {movie?.runtime} minutes | <span>Director:</span>{" "}
-                {movieDirector?.name}
+                <span>Length:</span> {movie?.runtime} minutes |{" "}
+                <span>Director:</span> {movieDirector?.name}
               </p>
             </div>
             <div className="row3">
               <p>
                 <span>Cast: </span>
-                {castMembers.map((cast: string, i: number) => {
-                  return <span key={i}> {cast} ,</span>;
-                })}
+                {castHelperFunction(castMembers)}
               </p>
             </div>
             <div className="row4">

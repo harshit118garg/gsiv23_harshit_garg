@@ -3,11 +3,11 @@
 .home-page-body {
   height: fit-content;
   width: 100%;
+  padding-top: 5rem;
 
   .movies-list {
     height: 100%;
     width: 100%;
-    overflow-y: scroll;
     padding: 2rem;
   }
 }

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import "./styles/index.scss";
-import { Link } from "react-router-dom";
 import { MdHome, MdSearch } from "react-icons/md";
+import { Link } from "react-router-dom";
 import { TopNavPropTypes } from "../../types/types";
+import "./styles/index.scss";
 
 export const TopNav = ({ navProp, changeHandler, query }: TopNavPropTypes) => {
   return (

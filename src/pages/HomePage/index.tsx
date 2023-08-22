@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ScreenBody } from "../../components/ScreenBody";
 import { TopNav } from "../../components/TopNav";
 import { discoverMoviesAsync, findMoviesAsync } from "../../redux/slice";
-import "./styles/index.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
-import { Loader } from "../../subComps/Loader";
 import { ErrorBox } from "../../subComps/ErrorBox";
-import { ScreenBody } from "../../components/ScreenBody";
+import { Loader } from "../../subComps/Loader";
+import "./styles/index.scss";
 
 export interface HomePagePropTypes {
   navProp: boolean;
 }
 
 export const HomePage = ({ navProp }: HomePagePropTypes) => {
+  // use state for seach input
   const [query, setQuery] = useState<string>("");
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,7 +29,7 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
     dispatch(discoverMoviesAsync(pageNum));
   };
 
-  const { page, results } = useSelector(
+  const { page, results, total_results } = useSelector(
     (state: RootState) => state.getMovies.apiResponse
   );
 
@@ -37,29 +38,31 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
     dispatch(findMoviesAsync(item));
   };
 
-  const { pageNum, queryResults } = useSelector(
+  const { pageNum, queryResults, total_resultsQuery } = useSelector(
     (state: RootState) => state.getMovies.apiQueryResponse
   );
 
   // load more latest movies on scroll
   const loadMoreLatestMovies = () => {
-    fetchLatestMovies(page + 1);
+    fetchLatestMovies(page);
   };
 
   // load more pages of movies based on userQuery
   const loadMoreQueryMovies = () => {
-    let item = { query, pageNum: pageNum + 1 };
+    let item = { query, pageNum };
     fetchQueryMovies(item);
   };
 
   // useEffect for Query Movies
   useEffect(() => {
-    let item = { query, pageNum };
-    let timeOut = setTimeout(() => {
-      fetchQueryMovies(item);
-    }, 900);
+    if (query) {
+      let item = { query, pageNum };
+      let timeOut = setTimeout(() => {
+        fetchQueryMovies(item);
+      }, 900);
 
-    return () => clearTimeout(timeOut);
+      return () => clearTimeout(timeOut);
+    }
   }, [query, dispatch]);
 
   // useEffect for latest movies
@@ -77,6 +80,7 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
             <ScreenBody
               movies={results}
               loadMoreMovies={loadMoreLatestMovies}
+              totalMovieResults={total_results}
             />
           </div>
         )}
@@ -85,6 +89,7 @@ export const HomePage = ({ navProp }: HomePagePropTypes) => {
             <ScreenBody
               movies={queryResults}
               loadMoreMovies={loadMoreQueryMovies}
+              totalMovieResults={total_resultsQuery}
             />
           </div>
         )}
